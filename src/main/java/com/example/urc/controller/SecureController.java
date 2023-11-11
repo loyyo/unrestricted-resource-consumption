@@ -3,10 +3,8 @@ package com.example.urc.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +71,7 @@ public class SecureController {
     private final List<byte[]> fileList = new ArrayList<>();
 
     @PostMapping(path = "/upload-file")
-    public ResponseEntity<String> uploadFiles(@RequestBody byte[] request) throws IOException {
+    public ResponseEntity<String> uploadFiles(@RequestBody byte[] request) {
         int maxSizeInBytes = 1024 * 1024;
         if (request.length > maxSizeInBytes) {
             return ResponseEntity.badRequest().body("Your file is too big");

@@ -5,14 +5,10 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/vulnerabilities")
@@ -64,7 +60,7 @@ public class VulnerableController {
     private final List<byte[]> fileList = new ArrayList<>();
 
     @PostMapping(path = "/upload-file")
-    public ResponseEntity<String> uploadFiles(@RequestBody byte[] request) throws IOException {
+    public ResponseEntity<String> uploadFiles(@RequestBody byte[] request) {
         fileList.add(request);
         return ResponseEntity.ok().body("File uploaded");
     }
